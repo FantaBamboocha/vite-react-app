@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import PizzaBlock from "./PizzaBlock";
 
 import { apiFunctions } from "../api/api.js";
-
+import jsonData from "../assets/pizza.json";
 const ContentItems = () => {
   const [pizzaList, setPizzaList] = useState([]);
 
@@ -12,14 +11,14 @@ const ContentItems = () => {
     const pizzaListRequest = async () => {
       try {
         const pizzaListResponse = await apiFunctions.requestData();
-
-        setPizzaList(pizzaListResponse);
+        console.log(pizzaListResponse);
+        pizzaListResponse && setPizzaList(pizzaListResponse);
       } catch (err) {
         console.error(err.message);
       }
     };
-
     pizzaListRequest();
+    // setPizzaList(jsonData);
   }, []);
 
   return (

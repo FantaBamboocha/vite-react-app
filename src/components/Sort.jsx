@@ -1,7 +1,25 @@
+import { useState } from "react";
+
 const Sort = () => {
+  const optionsToSort = ["популярности", "цене", "алфавиту"];
+
+  const [visiblePopup, setVisiblePopup] = useState(false);
+  const [activeOptionIndex, setActiveOptionIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(
+    optionsToSort[activeOptionIndex]
+  );
+
+  const selectOption = (index) => {
+    setSelectedOption(optionsToSort[index]);
+    setVisiblePopup(false);
+  };
+
+  const toggleVisiblePopup = () => {
+    setVisiblePopup((prevVisiblePopup) => !prevVisiblePopup);
+  };
   return (
-    <div class="sort">
-      <div class="sort__label">
+    <div className="sort">
+      <div className="sort__label" onClick={toggleVisiblePopup}>
         <svg
           width="10"
           height="6"
@@ -15,15 +33,26 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>популярности</span>
+        <span>{selectedOption}</span>
       </div>
-      <div class="sort__popup">
-        <ul>
-          <li class="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
-        </ul>
-      </div>
+      {visiblePopup && (
+        <div className="sort__popup">
+          <ul>
+            {optionsToSort.map((option, index) => (
+              <li
+                className={activeOptionIndex === index ? "active" : ""}
+                key={index}
+                onClick={() => {
+                  selectOption(index);
+                  setActiveOptionIndex(index);
+                }}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

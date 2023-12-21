@@ -4,8 +4,15 @@ const PizzaBlock = ({ data }) => {
   const { id, imageUrl, title, types, sizes, category, price } = data;
 
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
+  const [activeTypeIndex, setActiveTypeIndex] = useState(0);
+
+  const typeNames = ["тонкое", "традиционное"];
   const toggleActiveSizeIndex = (number) => {
     setActiveSizeIndex(number);
+  };
+
+  const toggleActiveTypeIndex = (number) => {
+    setActiveTypeIndex(number);
   };
   return (
     <div className="pizza-block">
@@ -13,8 +20,15 @@ const PizzaBlock = ({ data }) => {
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {types.map((type, index) => (
+            <li
+              key={index}
+              className={activeTypeIndex === index ? "active" : ""}
+              onClick={() => toggleActiveTypeIndex(index)}
+            >
+              {typeNames[type]}
+            </li>
+          ))}
         </ul>
         <ul>
           {sizes.map((size, index) => (
