@@ -25,6 +25,7 @@ body {
   &__items {
     display: flex;
     flex-wrap: wrap;
+    gap: 30px;
     justify-content: space-between;
   }
 
@@ -295,8 +296,9 @@ body {
 
     img {
       display: block;
-      width: 300px;
-      margin: 45px auto 60px;
+      padding: 30px 0;
+      width: 66%;
+      margin: 0 auto;
     }
 
     .button--black {
