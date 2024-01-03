@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
+
 import pizzaLogo from "../assets/img/pizza-logo.svg";
 
 const Header = () => {
@@ -52,6 +54,7 @@ const Header = () => {
             <span>3</span>
           </Link>
         </div>
+        <BurgerMenu />
       </div>
     </div>
   );
