@@ -26,7 +26,7 @@ let data = [
     types: [0],
     sizes: [26, 40],
     price: 245,
-    category: 0,
+    category: 5,
     rating: 6,
   },
   {
@@ -114,7 +114,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 285,
-    category: 5,
+    category: 2,
     rating: 7,
   },
   {
@@ -125,7 +125,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 233,
-    category: 5,
+    category: 2,
     rating: 7,
   },
   {
@@ -136,7 +136,7 @@ let data = [
     types: [0, 1],
     sizes: [30, 40],
     price: 435,
-    category: 6,
+    category: 2,
     rating: 9,
   },
 ];
@@ -180,6 +180,21 @@ app.delete("/data/:id", (req, res) => {
   const id = req.params.id;
   data = data.filter((item) => item.id !== parseInt(id));
   res.send("Элемент успешно удален");
+});
+
+// Сортировка по категорям
+app.get("/sorted-data", (req, res) => {
+  const categoryIndex = req.query.category;
+
+  if (categoryIndex === "0") {
+    sortedData = [...data];
+  } else {
+    sortedData = [...data].filter(
+      ({ category }) => category === parseInt(categoryIndex)
+    );
+  }
+
+  res.json(sortedData);
 });
 
 const PORT = 3000;

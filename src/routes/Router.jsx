@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Home from "../pages/Home";
 import NotFoundPage from "../pages/NotFound";
+import CartEmptyPage from "../pages/CartEmpty";
 import CartPage from "../pages/Cart";
 
 import { ROUTE_NAMES } from "./RouteNames";
@@ -9,6 +10,7 @@ const Router = () => {
   return (
     <Routes>
       <Route path={ROUTE_NAMES.Home} element={<Home />} />
+      <Route path={ROUTE_NAMES.CartEmptyPage} element={<CartEmptyPage />} />
       <Route path={ROUTE_NAMES.CartPage} element={<CartPage />} />
       <Route path={ROUTE_NAMES.NotFound} element={<NotFoundPage />} />
     </Routes>

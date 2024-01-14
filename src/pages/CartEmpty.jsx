@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CartPage = () => {
+const CartEmptyPage = () => {
   return (
     <div class="wrapper">
       <div class="content">
@@ -28,4 +28,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default CartEmptyPage;

@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-const Categories = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
+const Categories = ({ activeIndexCategory, toggleActiveCategory }) => {
   const categoryNames = [
     "Все",
     "Мясные",
@@ -12,18 +10,14 @@ const Categories = () => {
     "Закрытые",
   ];
 
-  const toggleActive = (number) => {
-    setActiveIndex(number);
-  };
-
   return (
     <div className="categories">
       <ul>
         {categoryNames.map((category, index) => (
           <li
             key={index}
-            className={index === activeIndex ? "active" : ""}
-            onClick={() => toggleActive(index)}
+            className={index === activeIndexCategory ? "active" : ""}
+            onClick={() => toggleActiveCategory(index)}
           >
             {category}
           </li>

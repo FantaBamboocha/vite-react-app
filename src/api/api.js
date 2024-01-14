@@ -1,14 +1,26 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/data";
+const BASE_URL = "http://localhost:3000";
 
 const apiFunctions = {
   requestData: async () => {
     try {
-      const pizzaResponse = await axios.get(BASE_URL);
+      const pizzaResponse = await axios.get(`${BASE_URL}/data`);
       return pizzaResponse.data;
     } catch (err) {
       console.error(err.message);
+    }
+  },
+  sortData: async (categoryIndex) => {
+    try {
+      const pizzaResponse = await axios.get(`${BASE_URL}/sorted-data`, {
+        params: {
+          category: categoryIndex,
+        },
+      });
+      return pizzaResponse.data;
+    } catch (err) {
+      console.log(err.message);
     }
   },
 };

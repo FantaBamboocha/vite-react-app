@@ -7,8 +7,8 @@ const Menu = ({ active, setActive, header, categories }) => {
       <div className={styles.menuContent}>
         <div className={styles.menuHeader}>{header}</div>
         <ul>
-          {categories.map((category) => (
-            <li>{category}</li>
+          {categories.map((category, index) => (
+            <li key={index}>{category}</li>
           ))}
         </ul>
       </div>
