@@ -11,11 +11,12 @@ const apiFunctions = {
       console.error(err.message);
     }
   },
-  sortData: async (categoryIndex) => {
+  sortData: async (categoryIndex, sortIndex) => {
     try {
       const pizzaResponse = await axios.get(`${BASE_URL}/sorted-data`, {
         params: {
           category: categoryIndex,
+          sortBy: sortIndex,
         },
       });
       return pizzaResponse.data;

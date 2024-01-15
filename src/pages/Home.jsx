@@ -5,12 +5,12 @@ import { apiFunctions } from "../api/api.js";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import ContentItems from "../components/ContentItems";
-import axios from "axios";
 
 const Home = () => {
   const [pizzaList, setPizzaList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeIndexCategory, setActiveIndexCategory] = useState(0);
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const [activeSortIndex, setActiveSortIndex] = useState(0);
 
   useEffect(() => {
     const pizzaListRequest = async () => {
@@ -37,7 +37,8 @@ const Home = () => {
       setIsLoading(true);
       try {
         const pizzaListResponse = await apiFunctions.sortData(
-          activeIndexCategory
+          activeCategoryIndex,
+          activeSortIndex
         );
         if (pizzaListResponse) {
           setTimeout(() => {
@@ -49,10 +50,14 @@ const Home = () => {
         console.log(error.message);
       }
     })();
-  }, [activeIndexCategory]);
+  }, [activeCategoryIndex, activeSortIndex]);
 
   const toggleActiveCategory = (number) => {
-    setActiveIndexCategory(number);
+    setActiveCategoryIndex(number);
+  };
+
+  const toggleActiveSort = (number) => {
+    setActiveSortIndex(number);
   };
 
   return (
@@ -61,9 +66,12 @@ const Home = () => {
         <div className="content__top">
           <Categories
             toggleActiveCategory={toggleActiveCategory}
-            activeIndexCategory={activeIndexCategory}
+            activeCategoryIndex={activeCategoryIndex}
           />
-          <Sort />
+          <Sort
+            toggleActiveSort={toggleActiveSort}
+            activeSortIndex={activeSortIndex}
+          />
         </div>
         <h2 className="content__title">Наши пиццы</h2>
         <ContentItems pizzaList={pizzaList} isLoading={isLoading} />

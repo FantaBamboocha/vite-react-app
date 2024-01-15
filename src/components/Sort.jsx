@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-const Sort = () => {
-  const optionsToSort = ["популярности", "цене", "алфавиту"];
+const Sort = ({ activeSortIndex, toggleActiveSort }) => {
+  const optionsToSort = ["популярности", "возрастанию цены", "убыванию цены"];
 
   const [visiblePopup, setVisiblePopup] = useState(false);
-  const [activeOptionIndex, setActiveOptionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(
-    optionsToSort[activeOptionIndex]
+    optionsToSort[activeSortIndex]
   );
 
   const selectOption = (index) => {
@@ -40,11 +39,11 @@ const Sort = () => {
           <ul>
             {optionsToSort.map((option, index) => (
               <li
-                className={activeOptionIndex === index ? "active" : ""}
+                className={activeSortIndex === index ? "active" : ""}
                 key={index}
                 onClick={() => {
                   selectOption(index);
-                  setActiveOptionIndex(index);
+                  toggleActiveSort(index);
                 }}
               >
                 {option}

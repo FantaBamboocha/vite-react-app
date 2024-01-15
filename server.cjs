@@ -184,17 +184,31 @@ app.delete("/data/:id", (req, res) => {
 
 // Сортировка по категорям
 app.get("/sorted-data", (req, res) => {
-  const categoryIndex = req.query.category;
+  const { category: categoryIndex, sortBy: sortIndex } = req.query;
 
-  if (categoryIndex === "0") {
-    sortedData = [...data];
-  } else {
-    sortedData = [...data].filter(
+  let filteredData;
+  const dataCopy = [...data];
+
+  if (categoryIndex !== "0") {
+    filteredData = dataCopy.filter(
       ({ category }) => category === parseInt(categoryIndex)
     );
+  } else {
+    filteredData = dataCopy;
   }
 
-  res.json(sortedData);
+  if (sortIndex === "0") {
+    // Сортировка по популярности (rating)
+    filteredData.sort((a, b) => b.rating - a.rating);
+  } else if (sortIndex === "1") {
+    // Сортировка по возрастанию цены
+    filteredData.sort((a, b) => a.price - b.price);
+  } else if (sortIndex === "2") {
+    // Сортировка по убыванию цены
+    filteredData.sort((a, b) => b.price - a.price);
+  }
+
+  res.json(filteredData);
 });
 
 const PORT = 3000;
