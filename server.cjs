@@ -184,7 +184,7 @@ app.delete("/data/:id", (req, res) => {
 
 // Сортировка по категорям
 app.get("/sorted-data", (req, res) => {
-  const { category: categoryIndex, sortBy: sortIndex } = req.query;
+  const { category: categoryIndex, sortBy: sortProperty, search } = req.query;
 
   let filteredData;
   const dataCopy = [...data];
@@ -197,15 +197,21 @@ app.get("/sorted-data", (req, res) => {
     filteredData = dataCopy;
   }
 
-  if (sortIndex === "0") {
+  if (sortProperty === "rating") {
     // Сортировка по популярности (rating)
     filteredData.sort((a, b) => b.rating - a.rating);
-  } else if (sortIndex === "1") {
+  } else if (sortProperty === "ascPrice") {
     // Сортировка по возрастанию цены
     filteredData.sort((a, b) => a.price - b.price);
-  } else if (sortIndex === "2") {
+  } else if (sortProperty === "desPrice") {
     // Сортировка по убыванию цены
     filteredData.sort((a, b) => b.price - a.price);
+  }
+
+  if (search) {
+    filteredData = filteredData.filter(({ title }) =>
+      title.toLowerCase().includes(search.toLowerCase())
+    );
   }
 
   res.json(filteredData);

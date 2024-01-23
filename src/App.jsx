@@ -1,15 +1,20 @@
+import { Provider } from "react-redux";
+
 import Header from "./components/Header";
 import Router from "./routes/Router";
-import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
+
+import { store } from "./redux/store";
 
 import "./scss/app.scss";
 
 function App() {
   return (
-    <div className="wrapper">
-      <Header />
-      <Router />
-    </div>
+    <Provider store={store}>
+      <div className="wrapper">
+        <Header />
+        <Router />
+      </div>
+    </Provider>
   );
 }
 

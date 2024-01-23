@@ -1,12 +1,20 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-const Sort = ({ activeSortIndex, toggleActiveSort }) => {
+import { setSortIndex } from "../redux/slices/filter";
+
+const Sort = ({ activeSortIndex }) => {
   const optionsToSort = ["популярности", "возрастанию цены", "убыванию цены"];
 
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     optionsToSort[activeSortIndex]
   );
+
+  const dispatch = useDispatch();
+  const toggleActiveSort = (index) => {
+    dispatch(setSortIndex(index));
+  };
 
   const selectOption = (index) => {
     setSelectedOption(optionsToSort[index]);
@@ -16,6 +24,7 @@ const Sort = ({ activeSortIndex, toggleActiveSort }) => {
   const toggleVisiblePopup = () => {
     setVisiblePopup((prevVisiblePopup) => !prevVisiblePopup);
   };
+
   return (
     <div className="sort">
       <div className="sort__label" onClick={toggleVisiblePopup}>

@@ -5,12 +5,16 @@ import { apiFunctions } from "../api/api.js";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import ContentItems from "../components/ContentItems";
+import Search from "../components/Search/";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [pizzaList, setPizzaList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
-  const [activeSortIndex, setActiveSortIndex] = useState(0);
+
+  const { categoryIndex, sortIndex, searchValue } = useSelector(
+    (state) => state.filter
+  );
 
   useEffect(() => {
     const pizzaListRequest = async () => {
@@ -37,8 +41,9 @@ const Home = () => {
       setIsLoading(true);
       try {
         const pizzaListResponse = await apiFunctions.sortData(
-          activeCategoryIndex,
-          activeSortIndex
+          categoryIndex,
+          sortIndex,
+          searchValue
         );
         if (pizzaListResponse) {
           setTimeout(() => {
@@ -50,30 +55,19 @@ const Home = () => {
         console.log(error.message);
       }
     })();
-  }, [activeCategoryIndex, activeSortIndex]);
-
-  const toggleActiveCategory = (number) => {
-    setActiveCategoryIndex(number);
-  };
-
-  const toggleActiveSort = (number) => {
-    setActiveSortIndex(number);
-  };
+  }, [categoryIndex, sortIndex, searchValue]);
 
   return (
     <div className="content">
       <div className="container">
         <div className="content__top">
-          <Categories
-            toggleActiveCategory={toggleActiveCategory}
-            activeCategoryIndex={activeCategoryIndex}
-          />
-          <Sort
-            toggleActiveSort={toggleActiveSort}
-            activeSortIndex={activeSortIndex}
-          />
+          <Categories activeCategoryIndex={categoryIndex} />
+          <Sort activeSortIndex={sortIndex} />
         </div>
-        <h2 className="content__title">Наши пиццы</h2>
+        <div className="content__title">
+          <h2>Наши пиццы</h2>
+          <Search searchValue={searchValue}></Search>
+        </div>
         <ContentItems pizzaList={pizzaList} isLoading={isLoading} />
       </div>
     </div>

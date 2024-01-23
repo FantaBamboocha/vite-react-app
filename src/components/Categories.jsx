@@ -1,4 +1,8 @@
-const Categories = ({ activeCategoryIndex, toggleActiveCategory }) => {
+import { useDispatch } from "react-redux";
+
+import { setCategoryIndex } from "../redux/slices/filter";
+
+const Categories = ({ activeCategoryIndex }) => {
   const categoryNames = [
     "Все",
     "Мясные",
@@ -7,6 +11,12 @@ const Categories = ({ activeCategoryIndex, toggleActiveCategory }) => {
     "Острые",
     "Закрытые",
   ];
+
+  const dispatch = useDispatch();
+
+  const toggleActiveCategory = (index) => {
+    dispatch(setCategoryIndex(index));
+  };
 
   return (
     <div className="categories">

@@ -19,7 +19,13 @@ body {
   padding: 40px 0;
 
   &__title {
-    margin: 35px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 35px 0;
+    }
   }
 
   &__items {
