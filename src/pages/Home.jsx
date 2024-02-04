@@ -12,7 +12,6 @@ import Search from "../components/Search/";
 import { setFilters } from "../redux/slices/filter.js";
 
 const Home = () => {
-  console.log("я появился в консоли");
   const [pizzaList, setPizzaList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const isSearchParams = useRef(false);
@@ -43,15 +42,15 @@ const Home = () => {
   };
 
   // Сохранение URL-параметров в Redux при первом рендере
-  useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
+  // useEffect(() => {
+  //   if (window.location.search) {
+  //     const params = qs.parse(window.location.search.substring(1));
 
-      dispatch(setFilters(params));
+  //     dispatch(setFilters(params));
 
-      isSearchParams.current = true;
-    }
-  }, []);
+  //     isSearchParams.current = true;
+  //   }
+  // }, []);
 
   // useEffect(() => {
   //   const pizzaListRequest = async () => {

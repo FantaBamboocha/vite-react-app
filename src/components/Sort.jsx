@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { setSortProperty } from "../redux/slices/filter";
 
 const Sort = () => {
+  const sortRef = useRef();
   const optionsToSort = ["популярности", "возрастанию цены", "убыванию цены"];
 
   const sortByMapping = {
@@ -33,8 +34,24 @@ const Sort = () => {
     setVisiblePopup((prevVisiblePopup) => !prevVisiblePopup);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sortRef.current && !sortRef.current.contains(event.target)) {
+        setVisiblePopup(false);
+
+        console.log("Клик вне поп-апа");
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label" onClick={toggleVisiblePopup}>
         <svg
           width="10"
