@@ -19,7 +19,6 @@ const Search = ({ searchValue }) => {
   const handleDebouncedChange = useCallback(
     debounce((e) => {
       dispatch(setSearchValue(e.target.value));
-      console.log(e.target.value);
     }, 1000),
     []
   );

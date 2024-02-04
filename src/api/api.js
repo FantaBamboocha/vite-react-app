@@ -11,14 +11,7 @@ const apiFunctions = {
       console.error(err.message);
     }
   },
-  sortData: async (categoryIndex, sortIndex, searchValue) => {
-    const sortByMapping = {
-      0: "rating",
-      1: "ascPrice",
-      2: "desPrice",
-    };
-
-    const sortProperty = sortByMapping[sortIndex];
+  sortData: async (categoryIndex, sortProperty, searchValue) => {
     try {
       const pizzaResponse = await axios.get(`${BASE_URL}/sorted-data`, {
         params: {

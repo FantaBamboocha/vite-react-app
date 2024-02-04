@@ -200,10 +200,10 @@ app.get("/sorted-data", (req, res) => {
   if (sortProperty === "rating") {
     // Сортировка по популярности (rating)
     filteredData.sort((a, b) => b.rating - a.rating);
-  } else if (sortProperty === "ascPrice") {
+  } else if (sortProperty === "priceUp") {
     // Сортировка по возрастанию цены
     filteredData.sort((a, b) => a.price - b.price);
-  } else if (sortProperty === "desPrice") {
+  } else if (sortProperty === "priceDown") {
     // Сортировка по убыванию цены
     filteredData.sort((a, b) => b.price - a.price);
   }
