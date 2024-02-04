@@ -38,8 +38,6 @@ const Sort = () => {
     const handleClickOutside = (event) => {
       if (sortRef.current && !sortRef.current.contains(event.target)) {
         setVisiblePopup(false);
-
-        console.log("Клик вне поп-апа");
       }
     };
 
