@@ -11,15 +11,18 @@ const apiFunctions = {
       console.error(err.message);
     }
   },
-  sortData: async (categoryIndex, sortProperty, searchValue) => {
+  sortData: async (category, sortProperty, searchValue) => {
     try {
-      const pizzaResponse = await axios.get(`${BASE_URL}/sorted-data`, {
-        params: {
-          category: categoryIndex,
-          sortBy: sortProperty,
-          search: searchValue,
-        },
-      });
+      const pizzaResponse = await axios.get(
+        `${BASE_URL}/category/${category}`
+        // {
+        //   params: {
+        //     category,
+        //     // sortBy: sortProperty,
+        //     // search: searchValue,
+        //   },
+        // }
+      );
       return pizzaResponse.data;
     } catch (err) {
       console.log(err.message);

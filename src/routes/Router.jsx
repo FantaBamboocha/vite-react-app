@@ -9,6 +9,7 @@ const Router = () => {
   return (
     <Routes>
       <Route path={ROUTE_NAMES.Home} element={<Home />} />
+      <Route path={ROUTE_NAMES.CategoryPage} element={<Home />} />
       <Route path={ROUTE_NAMES.CartPage} element={<CartPage />} />
       <Route path={ROUTE_NAMES.NotFound} element={<NotFoundPage />} />
     </Routes>

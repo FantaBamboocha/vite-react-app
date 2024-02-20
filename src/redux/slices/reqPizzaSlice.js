@@ -9,11 +9,11 @@ const initialState = {
 
 export const requestData = createAsyncThunk(
   "pizza/requestData",
-  async ({ categoryIndex, sortProperty, searchValue }) => {
+  async ({ category, sortProperty, searchValue }) => {
     const pizzaResponse = await apiFunctions.sortData(
-      categoryIndex,
-      sortProperty,
-      searchValue
+      category
+      // sortProperty,
+      // searchValue
     );
     return pizzaResponse;
   }

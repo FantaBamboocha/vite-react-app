@@ -15,7 +15,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 803,
-    category: 0,
+    category: "spicy",
     rating: 4,
   },
   {
@@ -26,7 +26,7 @@ let data = [
     types: [0],
     sizes: [26, 40],
     price: 245,
-    category: 5,
+    category: "vegetarian",
     rating: 6,
   },
   {
@@ -37,7 +37,7 @@ let data = [
     types: [0],
     sizes: [26, 40],
     price: 295,
-    category: 1,
+    category: "grill",
     rating: 4,
   },
   {
@@ -48,7 +48,7 @@ let data = [
     types: [1],
     sizes: [26, 30, 40],
     price: 275,
-    category: 2,
+    category: "meat",
     rating: 2,
   },
   {
@@ -59,7 +59,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 415,
-    category: 3,
+    category: "gril",
     rating: 8,
   },
   {
@@ -70,7 +70,7 @@ let data = [
     types: [0],
     sizes: [30, 40],
     price: 580,
-    category: 2,
+    category: "spicy",
     rating: 2,
   },
   {
@@ -81,7 +81,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 675,
-    category: 1,
+    category: "meat",
     rating: 9,
   },
   {
@@ -92,7 +92,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 450,
-    category: 4,
+    category: "closed",
     rating: 10,
   },
   {
@@ -103,7 +103,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 395,
-    category: 5,
+    category: "closed",
     rating: 10,
   },
   {
@@ -114,7 +114,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 285,
-    category: 2,
+    category: "vegetarian",
     rating: 7,
   },
   {
@@ -125,7 +125,7 @@ let data = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 233,
-    category: 2,
+    category: "closed",
     rating: 7,
   },
   {
@@ -136,7 +136,7 @@ let data = [
     types: [0, 1],
     sizes: [30, 40],
     price: 435,
-    category: 2,
+    category: "spicy",
     rating: 9,
   },
 ];
@@ -183,36 +183,37 @@ app.delete("/data/:id", (req, res) => {
 });
 
 // Сортировка по категорям
-app.get("/sorted-data", (req, res) => {
-  const { category: categoryIndex, sortBy: sortProperty, search } = req.query;
+app.get("/category/:category", (req, res) => {
+  // const { category, sortBy: sortProperty, search } = req.query;
+  const { category } = req.params;
 
   let filteredData;
   const dataCopy = [...data];
 
-  if (categoryIndex !== "0") {
+  if (category !== "all") {
     filteredData = dataCopy.filter(
-      ({ category }) => category === parseInt(categoryIndex)
+      ({ category: pizzaCategory }) => pizzaCategory === category
     );
   } else {
     filteredData = dataCopy;
   }
 
-  if (sortProperty === "rating") {
-    // Сортировка по популярности (rating)
-    filteredData.sort((a, b) => b.rating - a.rating);
-  } else if (sortProperty === "priceUp") {
-    // Сортировка по возрастанию цены
-    filteredData.sort((a, b) => a.price - b.price);
-  } else if (sortProperty === "priceDown") {
-    // Сортировка по убыванию цены
-    filteredData.sort((a, b) => b.price - a.price);
-  }
+  // if (sortProperty === "rating") {
+  //   // Сортировка по популярности (rating)
+  //   filteredData.sort((a, b) => b.rating - a.rating);
+  // } else if (sortProperty === "priceUp") {
+  //   // Сортировка по возрастанию цены
+  //   filteredData.sort((a, b) => a.price - b.price);
+  // } else if (sortProperty === "priceDown") {
+  //   // Сортировка по убыванию цены
+  //   filteredData.sort((a, b) => b.price - a.price);
+  // }
 
-  if (search) {
-    filteredData = filteredData.filter(({ title }) =>
-      title.toLowerCase().includes(search.toLowerCase())
-    );
-  }
+  // if (search) {
+  //   filteredData = filteredData.filter(({ title }) =>
+  //     title.toLowerCase().includes(search.toLowerCase())
+  //   );
+  // }
 
   res.json(filteredData);
 });

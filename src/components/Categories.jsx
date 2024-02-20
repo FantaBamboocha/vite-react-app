@@ -1,34 +1,25 @@
-import { useDispatch } from "react-redux";
-
-import { setCategoryIndex } from "../redux/slices/filter";
-
-const Categories = ({ activeCategoryIndex }) => {
+import CustomLink from "./CustomLink";
+const Categories = () => {
   const categoryNames = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
+    { userTitle: "Все", serverTitle: "all" },
+    { userTitle: "Мясные", serverTitle: "meat" },
+    { userTitle: "Вегетарианские", serverTitle: "vegetarian" },
+    { userTitle: "Гриль", serverTitle: "grill" },
+    { userTitle: "Острые", serverTitle: "spicy" },
+    { userTitle: "Закрытые", serverTitle: "closed" },
   ];
-
-  const dispatch = useDispatch();
-
-  const toggleActiveCategory = (index) => {
-    dispatch(setCategoryIndex(index));
-  };
 
   return (
     <div className="categories">
       <ul>
-        {categoryNames.map((category, index) => (
-          <li
-            key={index}
-            className={index === activeCategoryIndex ? "active" : ""}
-            onClick={() => toggleActiveCategory(index)}
+        {categoryNames.map(({ userTitle, serverTitle }) => (
+          <CustomLink
+            key={serverTitle}
+            to={`category/${serverTitle}`}
+            serverTitle={serverTitle}
           >
-            {category}
-          </li>
+            {userTitle}
+          </CustomLink>
         ))}
       </ul>
     </div>
