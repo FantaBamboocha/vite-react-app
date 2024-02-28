@@ -5,28 +5,20 @@ import { setSortProperty } from "../redux/slices/filter";
 
 const Sort = () => {
   const sortRef = useRef();
-  const optionsToSort = ["популярности", "возрастанию цены", "убыванию цены"];
+  const dispatch = useDispatch();
 
-  const sortByMapping = {
-    0: "rating",
-    1: "priceUp",
-    2: "priceDown",
+  const optionsToSort = {
+    rating: "популярности",
+    priceUp: "возрастанию цены",
+    priceDown: "убыванию цены",
   };
 
-  const [activeSortIndex, setActiveSortIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(
-    optionsToSort[activeSortIndex]
-  );
+  const [selectedOption, setSelectedOption] = useState("популярности");
   const [visiblePopup, setVisiblePopup] = useState(false);
 
-  const dispatch = useDispatch();
-  const toggleActiveSort = (index) => {
-    dispatch(setSortProperty(sortByMapping[index]));
-  };
-
-  const selectOption = (index) => {
-    setActiveSortIndex(index);
-    setSelectedOption(optionsToSort[index]);
+  const handleSelectOption = (serverSortProperty, option) => {
+    dispatch(setSortProperty(serverSortProperty));
+    setSelectedOption(option);
     setVisiblePopup(false);
   };
 
@@ -69,18 +61,17 @@ const Sort = () => {
       {visiblePopup && (
         <div className="sort__popup">
           <ul>
-            {optionsToSort.map((option, index) => (
-              <li
-                className={activeSortIndex === index ? "active" : ""}
-                key={index}
-                onClick={() => {
-                  selectOption(index);
-                  toggleActiveSort(index);
-                }}
-              >
-                {option}
-              </li>
-            ))}
+            {Object.entries(optionsToSort).map(
+              ([serverSortProperty, option]) => (
+                <li
+                  key={serverSortProperty}
+                  onClick={() => handleSelectOption(serverSortProperty, option)}
+                  className={selectedOption === option ? "active" : ""}
+                >
+                  {option}
+                </li>
+              )
+            )}
           </ul>
         </div>
       )}
