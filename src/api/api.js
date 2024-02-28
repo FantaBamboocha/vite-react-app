@@ -14,14 +14,13 @@ const apiFunctions = {
   sortData: async (category, sortProperty, searchValue) => {
     try {
       const pizzaResponse = await axios.get(
-        `${BASE_URL}/category/${category}`
-        // {
-        //   params: {
-        //     category,
-        //     // sortBy: sortProperty,
-        //     // search: searchValue,
-        //   },
-        // }
+        `${BASE_URL}/category/${category}`,
+        {
+          params: {
+            sort: sortProperty,
+            search: searchValue,
+          },
+        }
       );
       return pizzaResponse.data;
     } catch (err) {

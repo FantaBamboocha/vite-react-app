@@ -1,11 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { setSortProperty } from "../redux/slices/filter";
+import { setSortProperty } from "../redux/slices/searchParams";
 
 const Sort = () => {
   const sortRef = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const category = useSelector((state) => state.params.category);
 
   const optionsToSort = {
     rating: "популярности",
@@ -20,6 +24,7 @@ const Sort = () => {
     dispatch(setSortProperty(serverSortProperty));
     setSelectedOption(option);
     setVisiblePopup(false);
+    navigate(`/category/${category}?sort=${serverSortProperty}`);
   };
 
   const toggleVisiblePopup = () => {

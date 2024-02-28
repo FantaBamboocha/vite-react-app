@@ -6,8 +6,8 @@ const initialState = {
   searchValue: "",
 };
 
-export const filterSlice = createSlice({
-  name: "filter",
+export const searchParamsSlice = createSlice({
+  name: "params",
   initialState,
   reducers: {
     setCategory(state, action) {
@@ -27,6 +27,6 @@ export const filterSlice = createSlice({
 });
 
 export const { setCategory, setSortProperty, setSearchValue, setFilters } =
-  filterSlice.actions;
+  searchParamsSlice.actions;
 
-export default filterSlice.reducer;
+export default searchParamsSlice.reducer;

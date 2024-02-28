@@ -1,28 +1,29 @@
 import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import qs from "qs";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import ContentItems from "../components/ContentItems";
 import Search from "../components/Search/";
-import { setFilters } from "../redux/slices/filter.js";
 import { requestData } from "../redux/slices/reqPizzaSlice.js";
 
 const Home = () => {
   const { items: pizzaList, isLoading } = useSelector((state) => state.pizza);
   const { category, sortProperty, searchValue } = useSelector(
-    (state) => state.filter
+    (state) => state.params
   );
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const pizzaRequest = async () => {
     dispatch(requestData({ category, sortProperty, searchValue }));
   };
 
   useEffect(() => {
+    const searchParam = searchValue ? `&search=${searchValue}` : "";
+    navigate(`/category/${category}?sort=${sortProperty}${searchParam}`);
     pizzaRequest();
   }, [category, sortProperty, searchValue]);
 

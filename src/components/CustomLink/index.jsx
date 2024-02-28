@@ -1,7 +1,7 @@
 import { useMatch, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { setCategory } from "../../redux/slices/filter";
+import { setCategory } from "../../redux/slices/searchParams";
 const CustomLink = ({ children, to, ...props }) => {
   const { serverTitle } = props;
   const match = useMatch(to);

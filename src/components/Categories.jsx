@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import CustomLink from "./CustomLink";
 
@@ -14,8 +14,10 @@ const Categories = () => {
   ];
 
   const dispatch = useDispatch();
+
+  const { sortProperty, searchValue } = useSelector((state) => state.params);
   const handleClick = (serverTitle) => {
-    dispatch(requestData({ category: serverTitle }));
+    dispatch(requestData({ category: serverTitle, sortProperty, searchValue }));
   };
 
   return (

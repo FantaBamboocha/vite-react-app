@@ -184,8 +184,8 @@ app.delete("/data/:id", (req, res) => {
 
 // Сортировка по категорям
 app.get("/category/:category", (req, res) => {
-  // const { category, sortBy: sortProperty, search } = req.query;
   const { category } = req.params;
+  const { sort: sortProperty, search } = req.query;
 
   let filteredData;
   const dataCopy = [...data];
@@ -198,22 +198,22 @@ app.get("/category/:category", (req, res) => {
     filteredData = dataCopy;
   }
 
-  // if (sortProperty === "rating") {
-  //   // Сортировка по популярности (rating)
-  //   filteredData.sort((a, b) => b.rating - a.rating);
-  // } else if (sortProperty === "priceUp") {
-  //   // Сортировка по возрастанию цены
-  //   filteredData.sort((a, b) => a.price - b.price);
-  // } else if (sortProperty === "priceDown") {
-  //   // Сортировка по убыванию цены
-  //   filteredData.sort((a, b) => b.price - a.price);
-  // }
+  if (sortProperty === "rating") {
+    // Сортировка по популярности (rating)
+    filteredData.sort((a, b) => b.rating - a.rating);
+  } else if (sortProperty === "priceUp") {
+    // Сортировка по возрастанию цены
+    filteredData.sort((a, b) => a.price - b.price);
+  } else if (sortProperty === "priceDown") {
+    // Сортировка по убыванию цены
+    filteredData.sort((a, b) => b.price - a.price);
+  }
 
-  // if (search) {
-  //   filteredData = filteredData.filter(({ title }) =>
-  //     title.toLowerCase().includes(search.toLowerCase())
-  //   );
-  // }
+  if (search) {
+    filteredData = filteredData.filter(({ title }) =>
+      title.toLowerCase().includes(search.toLowerCase())
+    );
+  }
 
   res.json(filteredData);
 });

@@ -11,9 +11,9 @@ export const requestData = createAsyncThunk(
   "pizza/requestData",
   async ({ category, sortProperty, searchValue }) => {
     const pizzaResponse = await apiFunctions.sortData(
-      category
-      // sortProperty,
-      // searchValue
+      category,
+      sortProperty,
+      searchValue
     );
     return pizzaResponse;
   }
