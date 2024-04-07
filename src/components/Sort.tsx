@@ -1,15 +1,17 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, RefObject } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { setSortProperty } from "../redux/slices/searchParams";
 
+import { RootState } from "../@types/types";
+
 const Sort = () => {
-  const sortRef = useRef();
+  const sortRef: RefObject<HTMLDivElement> | null = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const category = useSelector((state) => state.params.category);
+  const category = useSelector((state: RootState) => state.params.category);
 
   const optionsToSort = {
     rating: "популярности",
@@ -20,10 +22,13 @@ const Sort = () => {
   const [selectedOption, setSelectedOption] = useState("популярности");
   const [visiblePopup, setVisiblePopup] = useState(false);
 
-  const handleSelectOption = (serverSortProperty, option) => {
+  const handleSelectOption = (serverSortProperty: string, option: string) => {
     dispatch(setSortProperty(serverSortProperty));
+
     setSelectedOption(option);
+
     setVisiblePopup(false);
+
     navigate(`/category/${category}?sort=${serverSortProperty}`);
   };
 
@@ -32,8 +37,8 @@ const Sort = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (sortRef.current && !sortRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setVisiblePopup(false);
       }
     };

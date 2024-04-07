@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -14,8 +14,12 @@ const Home = () => {
     (state) => state.params
   );
 
+  const [isMounted, setIsMounted] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const initialRender = true;
 
   const pizzaRequest = async () => {
     dispatch(requestData({ category, sortProperty, searchValue }));
@@ -23,8 +27,11 @@ const Home = () => {
 
   useEffect(() => {
     const searchParam = searchValue ? `&search=${searchValue}` : "";
-    navigate(`/category/${category}?sort=${sortProperty}${searchParam}`);
+    isMounted &&
+      navigate(`/category/${category}?sort=${sortProperty}${searchParam}`);
     pizzaRequest();
+
+    setIsMounted(true);
   }, [category, sortProperty, searchValue]);
 
   return (
