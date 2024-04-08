@@ -6,23 +6,28 @@ import { setSearchValue } from "../../redux/slices/searchParams";
 
 import styles from "./styles.module.scss";
 
-const Search = ({ searchValue }) => {
+type SearchProps = {
+  searchValue: string;
+};
+
+const Search: React.FC<SearchProps> = ({ searchValue }) => {
+  // Можно убрать пропс searchValue
   const [localSearchValue, setLocalSearchValue] = useState("");
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const handleClear = () => {
     dispatch(setSearchValue(""));
     setLocalSearchValue("");
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   const handleDebouncedChange = useCallback(
-    debounce((e) => {
+    debounce((e: any) => {
       dispatch(setSearchValue(e.target.value));
     }, 1000),
     []
   );
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setLocalSearchValue(e.target.value);
     handleDebouncedChange(e);
   };

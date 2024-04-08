@@ -5,15 +5,17 @@ import { addPizza } from "../redux/slices/cartSlice";
 import { RootState } from "../@types/types";
 
 type PizzaBlockProps = {
-  id: number;
-  imageUrl: string;
-  title: string;
-  types: number[];
-  sizes: number[];
-  price: number;
+  data: {
+    id: number;
+    imageUrl: string;
+    title: string;
+    types: number[];
+    sizes: number[];
+    price: number;
+  };
 };
 const PizzaBlock: React.FC<PizzaBlockProps> = (props) => {
-  const { id, imageUrl, title, types, sizes, price } = props;
+  const { id, imageUrl, title, types, sizes, price } = props.data;
   const typeNames = ["тонкое", "традиционное"];
 
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);

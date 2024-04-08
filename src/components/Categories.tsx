@@ -21,6 +21,7 @@ const Categories: React.FC = () => {
     (state: RootState) => state.params
   );
   const handleClick = (serverTitle: string) => {
+    // @ts-ignore
     dispatch(requestData({ category: serverTitle, sortProperty, searchValue }));
   };
 
