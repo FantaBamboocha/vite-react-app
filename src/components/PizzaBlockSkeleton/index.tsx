@@ -2,7 +2,7 @@ import { Skeleton } from "@mui/material";
 
 import styles from "./styles.module.scss";
 
-const PizzaBlockSkeleton = () => {
+const PizzaBlockSkeleton: React.FC = () => {
   return (
     <div className={styles.pizzaBlockSkeleton}>
       <Skeleton

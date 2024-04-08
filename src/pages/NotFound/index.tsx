@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
-const NotFoundPage = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <h2>Уууупс, что-то пошло не так 😬</h2>

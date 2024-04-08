@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import CustomLink from "./CustomLink";
 
 import { requestData } from "../redux/slices/reqPizzaSlice";
-const Categories = () => {
+import { RootState } from "../@types/types";
+
+const Categories: React.FC = () => {
   const categoryNames = [
     { userTitle: "Все", serverTitle: "all" },
     { userTitle: "Мясные", serverTitle: "meat" },
@@ -15,8 +17,10 @@ const Categories = () => {
 
   const dispatch = useDispatch();
 
-  const { sortProperty, searchValue } = useSelector((state) => state.params);
-  const handleClick = (serverTitle) => {
+  const { sortProperty, searchValue } = useSelector(
+    (state: RootState) => state.params
+  );
+  const handleClick = (serverTitle: string) => {
     dispatch(requestData({ category: serverTitle, sortProperty, searchValue }));
   };
 
