@@ -1,9 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-
 import CustomLink from "./CustomLink";
-
-import { requestData } from "../redux/slices/reqPizzaSlice";
-import { RootState } from "../@types/types";
 
 const Categories: React.FC = () => {
   const categoryNames = [
