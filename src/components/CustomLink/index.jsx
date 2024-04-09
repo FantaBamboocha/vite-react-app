@@ -2,15 +2,14 @@ import { useMatch, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { setCategory } from "../../redux/slices/searchParams";
-const CustomLink = ({ children, to, ...props }) => {
-  const { serverTitle } = props;
+import { requestData } from "../../redux/slices/reqPizzaSlice";
+const CustomLink = ({ children, to, serverTitle }) => {
   const match = useMatch(to);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    navigate(to);
     dispatch(setCategory(serverTitle));
+    dispatch(requestData({ category: serverTitle }));
   };
 
   return (

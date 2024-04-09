@@ -15,16 +15,6 @@ const Categories: React.FC = () => {
     { userTitle: "Закрытые", serverTitle: "closed" },
   ];
 
-  const dispatch = useDispatch();
-
-  const { sortProperty, searchValue } = useSelector(
-    (state: RootState) => state.params
-  );
-  const handleClick = (serverTitle: string) => {
-    // @ts-ignore
-    dispatch(requestData({ category: serverTitle, sortProperty, searchValue }));
-  };
-
   return (
     <div className="categories">
       <ul>
@@ -33,7 +23,6 @@ const Categories: React.FC = () => {
             key={serverTitle}
             to={`/category/${serverTitle}`}
             serverTitle={serverTitle}
-            onClick={() => handleClick(serverTitle)}
           >
             {userTitle}
           </CustomLink>
