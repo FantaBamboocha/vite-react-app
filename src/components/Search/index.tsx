@@ -6,12 +6,7 @@ import { setSearchValue } from "../../redux/slices/searchParams";
 
 import styles from "./styles.module.scss";
 
-type SearchProps = {
-  searchValue: string;
-};
-
-const Search: React.FC<SearchProps> = ({ searchValue }) => {
-  // Можно убрать пропс searchValue
+const Search: React.FC = () => {
   const [localSearchValue, setLocalSearchValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -27,7 +22,7 @@ const Search: React.FC<SearchProps> = ({ searchValue }) => {
     }, 1000),
     []
   );
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocalSearchValue(e.target.value);
     handleDebouncedChange(e);
   };

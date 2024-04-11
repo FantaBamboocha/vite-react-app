@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addPizza } from "../redux/slices/cartSlice";
-import { RootState } from "../@types/types";
+import { RootState } from "../redux/store";
 
 type PizzaBlockProps = {
   data: {
