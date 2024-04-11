@@ -3,20 +3,31 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setSortProperty } from "../redux/slices/searchParams";
 
+// export enum SortPropertyEnum {
+//   rating = "популярности",
+//   priceUp = "возрастанию цены",
+//   priceDown = "убыванию цены",
+// }
+
+export enum SortPropertyEnum {
+  "популярности" = "rating",
+  "возрастанию цены" = "priceUp",
+  "убыванию цены" = "priceDown",
+}
+
 const Sort: React.FC = () => {
   const sortRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 
-  const optionsToSort = {
-    rating: "популярности",
-    priceUp: "возрастанию цены",
-    priceDown: "убыванию цены",
-  };
+  const optionsToSort = Object.keys(SortPropertyEnum);
 
   const [selectedOption, setSelectedOption] = useState("популярности");
   const [visiblePopup, setVisiblePopup] = useState(false);
 
-  const handleSelectOption = (serverSortProperty: string, option: string) => {
+  const handleSelectOption = (option: string) => {
+    const serverSortProperty =
+      SortPropertyEnum[option as keyof typeof SortPropertyEnum];
+
     dispatch(setSortProperty(serverSortProperty));
 
     setSelectedOption(option);
@@ -63,17 +74,15 @@ const Sort: React.FC = () => {
       {visiblePopup && (
         <div className="sort__popup">
           <ul>
-            {Object.entries(optionsToSort).map(
-              ([serverSortProperty, option]) => (
-                <li
-                  key={serverSortProperty}
-                  onClick={() => handleSelectOption(serverSortProperty, option)}
-                  className={selectedOption === option ? "active" : ""}
-                >
-                  {option}
-                </li>
-              )
-            )}
+            {optionsToSort.map((option) => (
+              <li
+                key={option}
+                onClick={() => handleSelectOption(option)}
+                className={selectedOption === option ? "active" : ""}
+              >
+                {option}
+              </li>
+            ))}
           </ul>
         </div>
       )}

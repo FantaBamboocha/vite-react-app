@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import params from "./slices/searchParams";
+import params from "./slices/searchParams.ts";
 import cart from "./slices/cartSlice";
 import pizza from "./slices/reqPizzaSlice";
 
