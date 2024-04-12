@@ -11,13 +11,13 @@ interface IPizzaCart {
   count: number;
 }
 
-interface CartSliceState {
+interface ICartSliceState {
   items: IPizzaCart[];
   totalPrice: number;
   totalCount: number;
 }
 
-const initialState: CartSliceState = {
+const initialState: ICartSliceState = {
   items: [],
   totalPrice: 0,
   totalCount: 0,

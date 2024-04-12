@@ -11,7 +11,6 @@ enum CategoryEnum {
   closed = "closed",
 }
 
-console.log(CategoryEnum.all);
 interface ISearchParams {
   category: CategoryEnum;
   sortProperty: SortPropertyEnum;
@@ -19,8 +18,8 @@ interface ISearchParams {
 }
 
 const initialState: ISearchParams = {
-  category: CategoryEnum[CategoryEnum.all],
-  sortProperty: SortPropertyEnum["популярности"],
+  category: CategoryEnum.all,
+  sortProperty: SortPropertyEnum.популярности,
   searchValue: "",
 };
 
