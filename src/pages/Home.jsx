@@ -14,8 +14,6 @@ const Home = () => {
     (state) => state.params
   );
 
-  console.log(pizzaList);
-
   const [isMounted, setIsMounted] = useState(false);
 
   const dispatch = useDispatch();

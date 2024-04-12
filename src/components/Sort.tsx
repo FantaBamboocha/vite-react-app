@@ -3,12 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setSortProperty } from "../redux/slices/searchParams";
 
-// export enum SortPropertyEnum {
-//   rating = "популярности",
-//   priceUp = "возрастанию цены",
-//   priceDown = "убыванию цены",
-// }
-
 export enum SortPropertyEnum {
   "популярности" = "rating",
   "возрастанию цены" = "priceUp",
