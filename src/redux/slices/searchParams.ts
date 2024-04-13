@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { SortPropertyEnum } from "../../components/Sort";
 
-enum CategoryEnum {
+export enum CategoryEnum {
   all = "all",
   meat = "meat",
   spicy = "spicy",

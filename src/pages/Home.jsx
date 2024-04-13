@@ -6,7 +6,7 @@ import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import ContentItems from "../components/ContentItems";
 import Search from "../components/Search/";
-import { requestData } from "../redux/slices/reqPizzaSlice.js";
+import { requestData } from "../redux/slices/reqPizzaSlice";
 
 const Home = () => {
   const { items: pizzaList, isLoading } = useSelector((state) => state.pizza);
