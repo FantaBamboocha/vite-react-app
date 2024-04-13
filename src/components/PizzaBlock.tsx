@@ -17,7 +17,6 @@ type PizzaBlockProps = {
 const PizzaBlock: React.FC<PizzaBlockProps> = (props) => {
   const { id, imageUrl, title, types, sizes, price } = props.data;
   const typeNames = ["тонкое", "традиционное"];
-  console.log(imageUrl, title);
 
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
   const [activeTypeIndex, setActiveTypeIndex] = useState(0);

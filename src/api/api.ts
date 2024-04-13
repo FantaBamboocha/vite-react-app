@@ -1,4 +1,7 @@
 import axios from "axios";
+import { CategoryEnum } from "../redux/slices/searchParams";
+import { SortPropertyEnum } from "../components/Sort";
+import { IReqPizza } from "../redux/slices/reqPizzaSlice";
 
 const BASE_URL = "http://localhost:3000";
 
@@ -7,11 +10,15 @@ const apiFunctions = {
     try {
       const pizzaResponse = await axios.get(`${BASE_URL}/data`);
       return pizzaResponse.data;
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   },
-  sortData: async (category, sortProperty, searchValue) => {
+  sortData: async (
+    category: CategoryEnum,
+    sortProperty: SortPropertyEnum,
+    searchValue: string
+  ): Promise<IReqPizza[]> => {
     try {
       const pizzaResponse = await axios.get(
         `${BASE_URL}/category/${category}`,
@@ -23,8 +30,9 @@ const apiFunctions = {
         }
       );
       return pizzaResponse.data;
-    } catch (err) {
+    } catch (err: any) {
       console.log(err.message);
+      return Promise.resolve([]);
     }
   },
 };
