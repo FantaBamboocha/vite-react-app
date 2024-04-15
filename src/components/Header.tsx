@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -6,7 +7,7 @@ import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import pizzaLogo from "../assets/img/pizza-logo.svg";
 import { cartSelector } from "../redux/slices/cartSlice";
 
-const Header = () => {
+const Header: FC = () => {
   const location = useLocation();
   const { totalPrice, totalCount } = useSelector(cartSelector);
 

@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "../pages/Home";
@@ -5,7 +6,7 @@ import NotFoundPage from "../pages/NotFound";
 import CartPage from "../pages/CartPage";
 
 import { ROUTE_NAMES } from "./RouteNames";
-const Router = () => {
+const Router: FC = () => {
   return (
     <Routes>
       <Route path={ROUTE_NAMES.Home} element={<Home />} />

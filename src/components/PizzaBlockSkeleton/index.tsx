@@ -1,8 +1,10 @@
+import { FC } from "react";
+
 import { Skeleton } from "@mui/material";
 
 import styles from "./styles.module.scss";
 
-const PizzaBlockSkeleton: React.FC = () => {
+const PizzaBlockSkeleton: FC = () => {
   return (
     <div className={styles.pizzaBlockSkeleton}>
       <Skeleton

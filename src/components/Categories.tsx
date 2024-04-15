@@ -1,12 +1,19 @@
 import CustomLink from "./CustomLink";
 
-export const categoryNames = [
-  { userTitle: "Все", serverTitle: "all" },
-  { userTitle: "Мясные", serverTitle: "meat" },
-  { userTitle: "Вегетарианские", serverTitle: "vegetarian" },
-  { userTitle: "Гриль", serverTitle: "grill" },
-  { userTitle: "Острые", serverTitle: "spicy" },
-  { userTitle: "Закрытые", serverTitle: "closed" },
+import { CategoryEnum } from "../@types/enums";
+
+type CategoryNames = {
+  userTitle: string;
+  serverTitle: CategoryEnum;
+};
+
+export const categoryNames: CategoryNames[] = [
+  { userTitle: "Все", serverTitle: CategoryEnum.ALL },
+  { userTitle: "Мясные", serverTitle: CategoryEnum.MEAT },
+  { userTitle: "Вегетарианские", serverTitle: CategoryEnum.VEGETARIAN },
+  { userTitle: "Гриль", serverTitle: CategoryEnum.GRILL },
+  { userTitle: "Острые", serverTitle: CategoryEnum.SPICY },
+  { userTitle: "Закрытые", serverTitle: CategoryEnum.CLOSED },
 ];
 
 const Categories: React.FC = () => {

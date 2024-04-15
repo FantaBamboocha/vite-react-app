@@ -1,7 +1,15 @@
+import { FC } from "react";
 import PizzaBlock from "./PizzaBlock";
 import PizzaBlockSkeleton from "./PizzaBlockSkeleton";
 
-const ContentItems = ({ pizzaList, isLoading }) => {
+import { IReqPizza } from "../redux/slices/reqPizzaSlice";
+
+type ContentItemsProps = {
+  pizzaList: IReqPizza[];
+  isLoading: boolean;
+};
+
+const ContentItems: FC<ContentItemsProps> = ({ pizzaList, isLoading }) => {
   const skeletonArray = new Array(8).fill(null);
   return (
     <div className="content__items">

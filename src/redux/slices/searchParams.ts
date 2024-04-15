@@ -1,15 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { SortPropertyEnum } from "../../components/Sort";
-
-export enum CategoryEnum {
-  ALL = "all",
-  MEAT = "meat",
-  SPICY = "spicy",
-  VEGETARIAN = "vegetarian",
-  GRILL = "grill",
-  CLOSED = "closed",
-}
+import { CategoryEnum, SortPropertyEnum } from "../../@types/enums";
 
 interface ISearchParams {
   category: CategoryEnum;

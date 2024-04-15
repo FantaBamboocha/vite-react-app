@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Provider } from "react-redux";
 
 import Header from "./components/Header";
@@ -7,7 +8,7 @@ import { store } from "./redux/store";
 
 import "./scss/app.scss";
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <Provider store={store}>
       <div className="wrapper">

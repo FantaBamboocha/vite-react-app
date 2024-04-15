@@ -1,9 +1,17 @@
+import { FC } from "react";
 import { useMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { setCategory } from "../../redux/slices/searchParams.ts";
-const CustomLink = (props) => {
-  const { children, to, serverTitle } = props;
+import { setCategory } from "../../redux/slices/searchParams.js";
+import { CategoryEnum } from "../../@types/enums";
+
+type CustomLinkProps = {
+  children: React.ReactNode;
+  to: string;
+  serverTitle: CategoryEnum;
+};
+
+const CustomLink: FC<CustomLinkProps> = ({ children, to, serverTitle }) => {
   const match = useMatch(to);
   const dispatch = useDispatch();
 

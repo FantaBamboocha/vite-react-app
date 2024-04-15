@@ -2,12 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setSortProperty } from "../redux/slices/searchParams";
-
-export enum SortPropertyEnum {
-  "популярности" = "rating",
-  "возрастанию цены" = "priceUp",
-  "убыванию цены" = "priceDown",
-}
+import { SortPropertyEnum } from "../@types/enums";
 
 const Sort: React.FC = () => {
   const sortRef = useRef<HTMLDivElement>(null);

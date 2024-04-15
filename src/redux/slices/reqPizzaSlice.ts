@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { apiFunctions } from "../../api/api";
-import { CategoryEnum } from "./searchParams";
-import { SortPropertyEnum } from "../../components/Sort";
+import { CategoryEnum } from "../../@types/enums";
+import { SortPropertyEnum } from "../../@types/enums";
 export interface IReqPizza {
   id: number;
   imageUrl: string;
