@@ -1,6 +1,7 @@
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
-const CartEmpty: React.FC = () => {
+const CartEmpty: FC = () => {
   return (
     <div className="wrapper">
       <div className="content">

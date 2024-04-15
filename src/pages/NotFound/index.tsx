@@ -1,8 +1,9 @@
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
-const NotFoundPage: React.FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <h2>Уууупс, что-то пошло не так 😬</h2>

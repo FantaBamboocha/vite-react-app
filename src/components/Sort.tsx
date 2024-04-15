@@ -74,7 +74,7 @@ const Sort: React.FC = () => {
                 onClick={() => handleSelectOption(option)}
                 className={selectedOption === option ? "active" : ""}
               >
-                {option}
+                {option.toLocaleLowerCase()}
               </li>
             ))}
           </ul>

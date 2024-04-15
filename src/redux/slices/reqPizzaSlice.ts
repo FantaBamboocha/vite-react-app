@@ -31,15 +31,15 @@ const initialState: IReqPizzaSlice = {
   error: null,
 };
 
-export const requestData = createAsyncThunk(
+export const requestData = createAsyncThunk<IReqPizza[], IFetchDataArgs>(
   "pizza/requestData",
-  async ({ category, sortProperty, searchValue }: IFetchDataArgs) => {
+  async ({ category, sortProperty, searchValue }) => {
     const pizzaResponse = await apiFunctions.sortData(
       category,
       sortProperty,
       searchValue
     );
-    return pizzaResponse as IReqPizza[];
+    return pizzaResponse;
   }
 );
 

@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SortPropertyEnum } from "../../components/Sort";
 
 export enum CategoryEnum {
-  all = "all",
-  meat = "meat",
-  spicy = "spicy",
-  vegetarian = "vegetarian",
-  grill = "grill",
-  closed = "closed",
+  ALL = "all",
+  MEAT = "meat",
+  SPICY = "spicy",
+  VEGETARIAN = "vegetarian",
+  GRILL = "grill",
+  CLOSED = "closed",
 }
 
 interface ISearchParams {
@@ -18,7 +18,7 @@ interface ISearchParams {
 }
 
 const initialState: ISearchParams = {
-  category: CategoryEnum.all,
+  category: CategoryEnum.ALL,
   sortProperty: SortPropertyEnum.популярности,
   searchValue: "",
 };
