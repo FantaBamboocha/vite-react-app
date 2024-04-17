@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -9,7 +9,13 @@ import { cartSelector } from "../redux/slices/cartSlice";
 
 const Header: FC = () => {
   const location = useLocation();
-  const { totalPrice, totalCount } = useSelector(cartSelector);
+  const { items, totalPrice, totalCount } = useSelector(cartSelector);
+
+  useEffect(() => {
+    const jsonItems = JSON.stringify(items);
+
+    sessionStorage.setItem("cart", jsonItems);
+  }, [items]);
 
   return (
     <div className="header">

@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { getCartFromSS } from "../../utils/getCartFromSS";
 
-interface IPizzaCart {
+export interface IPizzaCart {
   id: number;
   title: string;
   price: number;
@@ -17,10 +18,12 @@ interface ICartSliceState {
   totalCount: number;
 }
 
+const { items, totalPrice, totalCount } = getCartFromSS();
+
 const initialState: ICartSliceState = {
-  items: [],
-  totalPrice: 0,
-  totalCount: 0,
+  items,
+  totalPrice,
+  totalCount,
 };
 
 export const cartSlice = createSlice({
