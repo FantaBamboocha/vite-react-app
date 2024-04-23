@@ -27,7 +27,7 @@ const CartItem: React.FC<CartItemProps> = ({
   const dispatch = useDispatch();
 
   const handleAddPizza = () => {
-    dispatch(addPizza({ id, price }));
+    dispatch(addPizza({ id, imageUrl, title, price, size, type, count }));
   };
   const handleRemovePizza = () => {
     dispatch(removePizza(id));
