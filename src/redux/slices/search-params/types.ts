@@ -12,3 +12,9 @@ export enum SortPropertyEnum {
   "возрастанию цены" = "priceUp",
   "убыванию цены" = "priceDown",
 }
+
+export interface ISearchParams {
+  category: CategoryEnum;
+  sortProperty: SortPropertyEnum;
+  searchValue: string;
+}

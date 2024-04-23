@@ -1,30 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { apiFunctions } from "../../api/api";
-import { CategoryEnum } from "../../@types/enums";
-import { SortPropertyEnum } from "../../@types/enums";
-export interface IReqPizza {
-  id: number;
-  imageUrl: string;
-  title: string;
-  types: number[];
-  sizes: number[];
-  price: number;
-  category: string;
-  rating: number;
-}
+import { apiFunctions } from "../../../api/api";
 
-interface IReqPizzaSlice {
-  items: IReqPizza[];
-  isLoading: boolean;
-  error: string | null | undefined;
-}
-
-interface IFetchDataArgs {
-  category: CategoryEnum;
-  sortProperty: SortPropertyEnum;
-  searchValue: string;
-}
+import { IReqPizza, IFetchDataArgs, IReqPizzaSlice } from "./types";
 
 const initialState: IReqPizzaSlice = {
   items: [],

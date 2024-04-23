@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { setCategory } from "../../redux/slices/searchParams.js";
+import { setCategory } from "../../redux/slices/search-params/slice.js";
 import { CategoryEnum } from "../../@types/enums";
 
 type CustomLinkProps = {

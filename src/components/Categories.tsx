@@ -1,6 +1,6 @@
 import CustomLink from "./CustomLink";
 
-import { CategoryEnum } from "../@types/enums";
+import { CategoryEnum } from "../redux/slices/search-params/types";
 
 type CategoryNames = {
   userTitle: string;

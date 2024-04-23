@@ -2,7 +2,7 @@ import { FC } from "react";
 import PizzaBlock from "./PizzaBlock";
 import PizzaBlockSkeleton from "./PizzaBlockSkeleton";
 
-import { IReqPizza } from "../redux/slices/reqPizzaSlice";
+import { IReqPizza } from "../redux/slices/req-thunk/slice";
 
 type ContentItemsProps = {
   pizzaList: IReqPizza[];

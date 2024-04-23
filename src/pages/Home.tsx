@@ -6,16 +6,16 @@ import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import ContentItems from "../components/ContentItems";
 import Search from "../components/Search";
-import { requestData } from "../redux/slices/reqPizzaSlice";
-import { RootState, useAppDispatch } from "../redux/store";
+
+import { requestData } from "../redux/slices/req-thunk/slice";
+import { useAppDispatch } from "../redux/store";
+
+import { paramsSelector } from "../redux/slices/search-params/selectors";
+import { pizzaSelector } from "../redux/slices/req-thunk/selectors";
 
 const Home: FC = () => {
-  const { items: pizzaList, isLoading } = useSelector(
-    (state: RootState) => state.pizza
-  );
-  const { category, sortProperty, searchValue } = useSelector(
-    (state: RootState) => state.params
-  );
+  const { items: pizzaList, isLoading } = useSelector(pizzaSelector);
+  const { category, sortProperty, searchValue } = useSelector(paramsSelector);
 
   const [isMounted, setIsMounted] = useState(false);
 

@@ -4,7 +4,7 @@ import {
   addPizza,
   minusPizza,
   removePizza,
-} from "../../redux/slices/cartSlice";
+} from "../../redux/slices/cart/slice";
 
 type CartItemProps = {
   id: number;

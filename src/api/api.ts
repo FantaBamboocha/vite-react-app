@@ -1,7 +1,7 @@
 import axios from "axios";
-import { CategoryEnum } from "../redux/slices/searchParams";
+import { CategoryEnum } from "../redux/slices/search-params/slice";
 import { SortPropertyEnum } from "../components/Sort";
-import { IReqPizza } from "../redux/slices/reqPizzaSlice";
+import { IReqPizza } from "../redux/slices/req-thunk/slice";
 
 const BASE_URL = "http://localhost:3000";
 

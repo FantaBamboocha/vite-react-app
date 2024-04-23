@@ -1,7 +1,7 @@
-import { IPizzaCart } from "../redux/slices/cartSlice";
+import { IPizzaCart } from "../redux/slices/cart/types";
 
-export const getCartFromSS = () => {
-  const cartItems = sessionStorage.getItem("cart");
+export const getCartFromLS = () => {
+  const cartItems = localStorage.getItem("cart");
 
   if (cartItems) {
     const items: IPizzaCart[] = JSON.parse(cartItems);

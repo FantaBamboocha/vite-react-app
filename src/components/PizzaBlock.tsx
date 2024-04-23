@@ -1,7 +1,7 @@
 import { useState, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addPizza } from "../redux/slices/cartSlice";
+import { addPizza } from "../redux/slices/cart/slice";
 import { RootState } from "../redux/store";
 
 type PizzaBlockProps = {

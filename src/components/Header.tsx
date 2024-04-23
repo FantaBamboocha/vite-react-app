@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 
 import pizzaLogo from "../assets/img/pizza-logo.svg";
-import { cartSelector } from "../redux/slices/cartSlice";
+import { cartSelector } from "../redux/slices/cart/selectors";
 
 const Header: FC = () => {
   const location = useLocation();
@@ -14,7 +14,7 @@ const Header: FC = () => {
   useEffect(() => {
     const jsonItems = JSON.stringify(items);
 
-    sessionStorage.setItem("cart", jsonItems);
+    localStorage.setItem("cart", jsonItems);
   }, [items]);
 
   return (

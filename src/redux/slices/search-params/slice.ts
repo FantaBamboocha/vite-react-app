@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { CategoryEnum, SortPropertyEnum } from "../../@types/enums";
-
-interface ISearchParams {
-  category: CategoryEnum;
-  sortProperty: SortPropertyEnum;
-  searchValue: string;
-}
+import { ISearchParams, CategoryEnum, SortPropertyEnum } from "./types";
 
 const initialState: ISearchParams = {
   category: CategoryEnum.ALL,
