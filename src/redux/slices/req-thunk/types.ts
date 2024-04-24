@@ -1,4 +1,7 @@
-import { CategoryEnum, SortPropertyEnum } from "../search-params/types";
+import {
+  CategoryEnum,
+  SortPropertyEnum,
+} from "@redux/slices/search-params/types";
 
 export interface IReqPizza {
   id: number;

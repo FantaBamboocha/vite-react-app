@@ -2,10 +2,10 @@ import { FC, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import BurgerMenu from "./BurgerMenu/BurgerMenu";
+import BurgerMenu from "@components/BurgerMenu/BurgerMenu";
 
 import pizzaLogo from "../assets/img/pizza-logo.svg";
-import { cartSelector } from "../redux/slices/cart/selectors";
+import { cartSelector } from "@redux/slices/cart/selectors";
 
 const Header: FC = () => {
   const location = useLocation();

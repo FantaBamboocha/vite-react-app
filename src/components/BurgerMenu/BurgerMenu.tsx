@@ -3,7 +3,7 @@ import { useState, FC } from "react";
 import Burger from "./Burger";
 import Menu from "./Menu";
 
-import { categoryNames } from "../Categories";
+import { categoryNames } from "@components/Categories";
 import styles from "./styles.module.scss";
 
 const BurgerMenu: FC = () => {

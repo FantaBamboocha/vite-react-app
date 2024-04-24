@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
-import params from "./slices/search-params/slice";
-import cart from "./slices/cart/slice";
-import pizza from "./slices/req-thunk/slice";
+import params from "@redux/slices/search-params/slice";
+import cart from "@redux/slices/cart/slice";
+import pizza from "@redux/slices/req-thunk/slice";
 
 export const store = configureStore({
   reducer: {

@@ -2,9 +2,9 @@ import { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import CartItem from "../../components/CartItem";
-import { clearCart } from "../../redux/slices/cart/slice";
-import { RootState } from "../../redux/store";
+import CartItem from "@components/CartItem";
+import { clearCart } from "@redux/slices/cart/slice";
+import { RootState } from "@redux/store";
 
 const Cart: FC = () => {
   const {

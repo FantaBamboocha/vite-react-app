@@ -2,16 +2,16 @@ import { useEffect, useState, FC } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Categories from "../components/Categories";
-import Sort from "../components/Sort";
-import ContentItems from "../components/ContentItems";
-import Search from "../components/Search";
+import Categories from "@components/Categories";
+import Sort from "@components/Sort";
+import ContentItems from "@components/ContentItems";
+import Search from "@components/Search";
 
-import { requestData } from "../redux/slices/req-thunk/slice";
-import { useAppDispatch } from "../redux/store";
+import { requestData } from "@redux/slices/req-thunk/slice";
+import { useAppDispatch } from "@redux/store";
 
-import { paramsSelector } from "../redux/slices/search-params/selectors";
-import { pizzaSelector } from "../redux/slices/req-thunk/selectors";
+import { paramsSelector } from "@redux/slices/search-params/selectors";
+import { pizzaSelector } from "@redux/slices/req-thunk/selectors";
 
 const Home: FC = () => {
   const { items: pizzaList, isLoading } = useSelector(pizzaSelector);

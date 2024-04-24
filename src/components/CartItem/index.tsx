@@ -1,10 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import {
-  addPizza,
-  minusPizza,
-  removePizza,
-} from "../../redux/slices/cart/slice";
+import { addPizza, minusPizza, removePizza } from "@redux/slices/cart/slice";
 
 type CartItemProps = {
   id: number;

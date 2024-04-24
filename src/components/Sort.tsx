@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setSortProperty } from "../redux/slices/search-params/slice";
-import { SortPropertyEnum } from "../redux/slices/search-params/types";
+import { setSortProperty } from "@redux/slices/search-params/slice";
+import { SortPropertyEnum } from "@redux/slices/search-params/types";
 
 const Sort: React.FC = () => {
   const sortRef = useRef<HTMLDivElement>(null);

@@ -2,8 +2,8 @@ import { FC } from "react";
 import { useMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { setCategory } from "../../redux/slices/search-params/slice.js";
-import { CategoryEnum } from "../../@types/enums";
+import { setCategory } from "@redux/slices/search-params/slice.js";
+import { CategoryEnum } from "@redux/slices/search-params/types";
 
 type CustomLinkProps = {
   children: React.ReactNode;
