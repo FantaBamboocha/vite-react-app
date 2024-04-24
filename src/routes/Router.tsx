@@ -7,8 +7,8 @@ import { ROUTE_NAMES } from "./RouteNames";
 // import NotFoundPage from "../pages/NotFound";
 // import CartPage from "../pages/CartPage";
 
-const LazyCartPage = lazy(() => import("../pages/CartPage"));
-const LazyNotFoundPage = lazy(() => import("../pages/NotFound"));
+const LazyCartPage = lazy(() => import("@pages/CartPage"));
+const LazyNotFoundPage = lazy(() => import("@pages/NotFound"));
 
 const Router: FC = () => {
   return (
