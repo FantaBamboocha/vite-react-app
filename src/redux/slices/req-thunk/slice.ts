@@ -12,13 +12,18 @@ const initialState: IReqPizzaSlice = {
 
 export const requestData = createAsyncThunk<IReqPizza[], IFetchDataArgs>(
   "pizza/requestData",
-  async ({ category, sortProperty, searchValue }) => {
-    const pizzaResponse = await apiFunctions.sortData(
-      category,
-      sortProperty,
-      searchValue
-    );
-    return pizzaResponse;
+  async ({ category, sortProperty, searchValue }, { rejectWithValue }) => {
+    try {
+      const pizzaResponse = await apiFunctions.sortData(
+        category,
+        sortProperty,
+        searchValue
+      );
+      return pizzaResponse;
+    } catch (err: any) {
+      console.log(err);
+      return rejectWithValue(err.message);
+    }
   }
 );
 

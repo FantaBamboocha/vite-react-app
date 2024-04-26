@@ -28,6 +28,7 @@ const Home: FC = () => {
     const searchParam = searchValue ? `&search=${searchValue}` : "";
     isMounted &&
       navigate(`/category/${category}?sort=${sortProperty}${searchParam}`);
+
     pizzaRequest();
 
     setIsMounted(true);

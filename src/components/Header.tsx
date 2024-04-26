@@ -7,6 +7,8 @@ import BurgerMenu from "@components/BurgerMenu/BurgerMenu";
 import pizzaLogo from "../assets/img/pizza-logo.svg";
 import { cartSelector } from "@redux/slices/cart/selectors";
 
+import TestComponent from "./test-component/TestComponent";
+
 const Header: FC = () => {
   const location = useLocation();
   const { items, totalPrice, totalCount } = useSelector(cartSelector);
@@ -29,6 +31,7 @@ const Header: FC = () => {
             </div>
           </div>
         </Link>
+        <TestComponent />
 
         <div className="header__cart">
           {location.pathname !== "/cart" && (

@@ -11,7 +11,12 @@ export * from "./slices/req-thunk/slice";
 
 // Types
 export type { ICartSliceState, IPizzaCart } from "./slices/cart/types";
-export type { ISearchParams } from "./slices/search-params/types";
+export type {
+  ISearchParams,
+  CategoryEnum,
+  SortPropertyEnum,
+} from "./slices/search-params/types";
+export type { IReqPizza } from "./slices/req-thunk/types";
 export type { RootState } from "./store";
 
 // Store
