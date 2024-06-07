@@ -15,10 +15,10 @@ type MenuProps = {
 };
 
 const Menu: FC<MenuProps> = ({
-  menuActive,
-  setMenuActive,
-  header,
-  categories,
+  menuActive = false,
+  setMenuActive = Function.prototype,
+  header = "заглушка",
+  categories = [],
 }) => {
   return (
     <div
