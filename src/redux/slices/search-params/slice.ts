@@ -31,4 +31,6 @@ export const searchParamsSlice = createSlice({
 export const { setCategory, setSortProperty, setSearchValue } =
   searchParamsSlice.actions;
 
+export { initialState as initialSearchParamsState };
+
 export default searchParamsSlice.reducer;

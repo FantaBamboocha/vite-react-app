@@ -21,3 +21,9 @@ export type { RootState } from "./store";
 
 // Store
 export * from "@redux/store";
+
+// Initial state
+
+export { initialSearchParamsState } from "./slices/search-params/slice";
+export { initialCartState } from "./slices/cart/slice";
+export { initialReqPizzaState } from "./slices/req-thunk/slice";

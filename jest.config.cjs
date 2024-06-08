@@ -29,6 +29,7 @@ module.exports = {
   },
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   moduleNameMapper: {
+    "^@redux/(.*)$": "<rootDir>/src/redux/$1",
     "^.+\\.svg$": "jest-svg-transformer",
     "^.+\\.(css | scss)$": "identity-obj-proxy",
   },

@@ -47,3 +47,5 @@ const reqPizzaSlice = createSlice({
 });
 
 export default reqPizzaSlice.reducer;
+
+export { initialState as initialReqPizzaState };
