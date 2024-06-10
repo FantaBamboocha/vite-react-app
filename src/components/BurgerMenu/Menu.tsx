@@ -1,4 +1,5 @@
 import { FC } from "react";
+import cn from "classnames";
 
 import styles from "./styles.module.scss";
 
@@ -20,10 +21,12 @@ const Menu: FC<MenuProps> = ({
   header = "заглушка",
   categories = [],
 }) => {
+  const menuClass = cn(styles.menu, {
+    [styles.active]: menuActive,
+  });
+
   return (
-    <div
-      className={menuActive ? styles.menu + " " + styles.active : styles.menu}
-    >
+    <div className={menuClass}>
       <div className={styles.blur} onClick={() => setMenuActive(false)} />
       <div className={styles.menuContent}>
         <div className={styles.menuHeader}>{header}</div>

@@ -9,6 +9,7 @@ const defaultProps = {
   header: "header",
   categories: [{ userTitle: "Category 1" }, { userTitle: "Category 2" }],
 };
+
 jest.mock("./styles.module.scss", () => {
   return {
     active: "active",
@@ -43,15 +44,12 @@ describe("Menu Component", () => {
     expect(defaultProps.setMenuActive).toHaveBeenCalled();
   });
 
-  // it("should have the correct class name based on menuActive prop", () => {
-  //   const { container } = render(<Menu {...defaultProps} />);
-  //   const menuElement = container.querySelector(".menu");
+  it("dynamic style works", () => {
+    const { container } = render(<Menu {...defaultProps} menuActive={false} />);
 
-  //   expect(menuElement.classList.contains("active")).toBe(true);
-
-  //   render(<Menu {...defaultProps} menuActive={false} />);
-  //   expect(menuElement.classList.contains("active")).toBe(false);
-  // });
+    const menuElement = container.querySelector(".menu");
+    expect(menuElement).not.toHaveClass("active");
+  });
 
   it("Menu Snapshot", () => {
     const menu = render(<Menu {...defaultProps} />);

@@ -1,5 +1,4 @@
 import configureMockStore from "redux-mock-store";
-import { jest } from "@jest/globals";
 
 import {
   initialSearchParamsState,
