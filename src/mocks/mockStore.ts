@@ -10,8 +10,8 @@ const mockStore = configureMockStore();
 
 export const createMockStore = (state = {}) =>
   mockStore({
-    params: initialSearchParamsState,
-    cart: initialCartState,
-    pizza: initialReqPizzaState,
+    paramsReducer: initialSearchParamsState,
+    cartReducer: initialCartState,
+    pizzaReducer: initialReqPizzaState,
     ...state,
   });

@@ -1,8 +1,8 @@
 import { useState, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addPizza } from "@redux/slices/cart/slice";
 import { RootState } from "@redux/store";
+import { addPizza, cartItemByIdSelector } from "@redux/index";
 
 type PizzaBlockProps = {
   data: {
@@ -44,9 +44,7 @@ const PizzaBlock: FC<PizzaBlockProps> = (props) => {
     setActiveTypeIndex(number);
   };
 
-  const cartPizza = useSelector((state: RootState) =>
-    state.cart.items.find((obj) => obj.id === id)
-  );
+  const cartPizza = useSelector(cartItemByIdSelector(id));
 
   const addCount = cartPizza ? cartPizza.count : 0;
   return (

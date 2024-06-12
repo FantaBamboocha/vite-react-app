@@ -4,9 +4,9 @@ export * from "./slices/req-thunk/selectors";
 export * from "./slices/search-params/selectors";
 
 // Slices
-export { default as cart } from "./slices/cart/slice";
-export { default as pizza } from "./slices/req-thunk/slice";
-export { default as params } from "./slices/search-params/slice";
+export { default as cartReducer } from "./slices/cart/slice";
+export { default as pizzaReducer } from "./slices/req-thunk/slice";
+export { default as paramsReducer } from "./slices/search-params/slice";
 export * from "./slices/req-thunk/slice";
 
 // Types
@@ -27,3 +27,13 @@ export * from "@redux/store";
 export { initialSearchParamsState } from "./slices/search-params/slice";
 export { initialCartState } from "./slices/cart/slice";
 export { initialReqPizzaState } from "./slices/req-thunk/slice";
+
+// Actions
+export * from "./slices/search-params/slice";
+export {
+  addPizza,
+  minusPizza,
+  removePizza,
+  clearCart,
+} from "./slices/cart/slice";
+export * from "./slices/req-thunk/slice";
